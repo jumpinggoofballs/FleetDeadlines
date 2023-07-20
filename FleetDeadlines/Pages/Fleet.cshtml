@@ -1,0 +1,13 @@
+﻿@page
+@model FleetDeadlines.Pages.FleetModel
+@{
+    ViewData["Title"] = "Manage Fleet";
+}
+
+
+@foreach (var item in Model.Vehicles)
+{
+    <li>
+        @item.RegistrationNumber
+    </li>
+}
