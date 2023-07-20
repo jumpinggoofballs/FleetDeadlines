@@ -1,4 +1,5 @@
 ﻿using FleetDeadlines.Data;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace FleetDeadlines.Models
@@ -23,10 +24,14 @@ namespace FleetDeadlines.Models
                     return;   // DB has been seeded
                 }
 
-                context.Vehicles.AddRange(
-                    new Vehicle
-                    { RegistrationNumber = "Test 1" }
-                );
+                List<string> testVRNs = new List<string>
+                    { "AA19AAA", "AA19EEE", "AA19PPP", "L2WPS", "AA19SRN", "AA19DSL", "AA19MOT", "AA19AMP"};
+
+                foreach (var item in testVRNs)
+                {
+                    context.Vehicles.Add(new Vehicle { RegistrationNumber = item });
+                }
+
                 context.SaveChanges();
             }
         }
