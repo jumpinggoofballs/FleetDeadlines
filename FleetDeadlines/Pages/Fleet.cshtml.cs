@@ -3,7 +3,6 @@ using FleetDeadlines.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace FleetDeadlines.Pages
 {
@@ -15,6 +14,9 @@ namespace FleetDeadlines.Pages
         {
             _context = context;
         }
+
+        [BindProperty]
+        public Vehicle NewVehicle { get; set; } = default!;
 
         public IList<Vehicle> Vehicles { get; set; } = default!;
 

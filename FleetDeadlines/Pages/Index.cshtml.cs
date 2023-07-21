@@ -1,6 +1,5 @@
 ﻿using FleetDeadlines.Data;
 using FleetDeadlines.Models;
-using Humanizer;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
