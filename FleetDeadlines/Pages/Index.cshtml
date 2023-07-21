@@ -4,10 +4,12 @@
     ViewData["Title"] = "Fleet Deadlines";
 }
 
+<br>
 <div class="text-center">
     <h1 class="display-4">Upcoming Deadlines</h1>
 </div>
 
+<br>
 <table class="table">
     <thead>
         <tr>
@@ -31,6 +33,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Vehicles[0].TaxDueDate)
+            </th>
+            <th>
+                DEADLINES
             </th>
         </tr>
     </thead>
@@ -59,16 +64,24 @@
                 <td>
                     @Html.DisplayFor(model => item.TaxDueDate)
                 </td>
+                <td>
+                    @Model.DaysCalculations(item)
+                </td>
             </tr>
         }
     </tbody>
 </table>
 
-
+<br>
+<br>
 <div class="text-center">
     <h2 class="display-4">Other Problems</h2>
+    <p>
+        Please contact DVLA directly to resolve these issues.
+    </p>
 </div>
 
+<br>
 <table class="table">
     <thead>
         <tr>

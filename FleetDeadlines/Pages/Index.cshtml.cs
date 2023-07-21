@@ -1,5 +1,6 @@
 ﻿using FleetDeadlines.Data;
 using FleetDeadlines.Models;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +21,34 @@ namespace FleetDeadlines.Pages
         public IList<Vehicle> ProblemVehicles { get; set; } = default!;
 
 
-        public async Task OnGetAsync()
+        public string DaysCalculations(Vehicle v)
+        {
+            DateTime motDate = DateTime.Parse(v.MotExpiryDate);
+            DateTime taxDate = DateTime.Parse(v.TaxDueDate);
+
+            if (motDate == taxDate)
+            {
+                return $"{DaysRemaining(motDate)} days remaining for both MOT and Tax";
+            } 
+            else if (motDate < taxDate)
+            {
+                return $"{DaysRemaining(motDate)} days remaining for MOT  \n{DaysRemaining(taxDate)} days remaining for Tax";
+            } 
+            else
+            {
+                return $"{DaysRemaining(taxDate)} days remaining for Tax  \n{DaysRemaining(motDate)} days remaining for MOT";
+            }
+        }
+
+        private int DaysRemaining(DateTime d)
+        {
+            TimeSpan timeSpan = d - DateTime.Now;
+            return (int)timeSpan.TotalDays;
+        }
+
+
+
+    public async Task OnGetAsync()
         {
             if (_context.Vehicles != null)
             {
