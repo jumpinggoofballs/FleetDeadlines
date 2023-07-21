@@ -17,7 +17,7 @@ namespace FleetDeadlines.Pages.Fleet
         }
 
         [BindProperty(SupportsGet = true)]
-        public string? _NewRVN { get; set; }
+        public string? NewRVN { get; set; }
 
         public Vehicle NewVehicle;
 
@@ -31,39 +31,11 @@ namespace FleetDeadlines.Pages.Fleet
                 Vehicles = await _context.Vehicles.ToListAsync();
             }
 
-            if (!string.IsNullOrEmpty(_NewRVN))
-            {
-                NewVehicle = DvlaGet.withReg(_NewRVN);
-                Console.WriteLine(NewVehicle.Make);
-            }
+            //if (!string.IsNullOrEmpty(_NewRVN))
+            //{
+            //    NewVehicle = DvlaGet.withReg(_NewRVN);
+            //    Console.WriteLine(NewVehicle.Make);
+            //}
         }
-
-        public async Task<IActionResult> OnPostRVNLookupAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _NewRVN = Request.Form["NewRVN"];
-            //NewVehicle = DvlaGet.withReg(_NewRVN);
-            //Console.WriteLine(NewVehicle.Make);
-
-            return Page();
-            //return RedirectToPage();
-        }
-
-        //public async Task<IActionResult> OnPostAsync()
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Page();
-        //    }
-
-        //    //_context.Movie.Add(Movie);
-        //    //await _context.SaveChangesAsync();
-
-        //    return RedirectToPage();
-        //}
     }
 }

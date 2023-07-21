@@ -62,7 +62,7 @@ namespace FleetDeadlines.Pages.Fleet
                 }
             }
 
-            return Page();
+            return RedirectToPage("./Index");
         }
 
         private bool VehicleExists(string id)

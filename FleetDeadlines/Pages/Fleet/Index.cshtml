@@ -8,25 +8,24 @@
 <div class="text-center">
     <h1 class="display-4">Fleet</h1>
 
-    <form method="post" asp-page-handler="RVNLookup" class="row p-4 row-cols-sm-auto g-2 bg-light mt-4 align-items-center">
+    <div class="row p-4 row-cols-sm-auto g-2 bg-light mt-4 align-items-center">
         <div class="col-1 w-25">
-            <label for="NewRVN">
+            
                 <strong>
                     Add new Vehicle: 
                 </strong>
-            </label>
         </div>
         <div class="col-2 w-50">
-            <input type="text" name="NewRVN" id="NewRVN" class="form-control" placeholder="Enter VRN without any spaces" />
+            <input id="newRVN" class="w-100" type="text" placeholder="Enter VRN without any spaces" />
         </div>
         <div class="col-3 w-25">
-            <button type="submit" class="btn btn-primary">
+            <a id="findButton" asp-page="./Find" asp-route-id="@Model.NewRVN" class="btn btn-primary">
                 <strong>
                     Find and Add
                 </strong>
-            </button>
+            </a>
         </div>
-    </form>
+    </div>
 </div>
 
 @if (Model.Vehicles != null && Model.Vehicles.Count != 0)
@@ -74,3 +73,11 @@
         </tbody>
     </table>
 }
+
+<script>
+    document.getElementById("newRVN").addEventListener("input", function () {
+        var input = document.getElementById("newRVN").value;
+        var anchor = document.getElementById("findButton");
+        anchor.href = anchor.href.replace(/[^\/]+$/, "Find?id=" + input);
+    });
+</script>
