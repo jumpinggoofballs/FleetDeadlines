@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace FleetDeadlines.Pages
+namespace FleetDeadlines.Pages.Fleet
 {
-    public class FleetModel : PageModel
+    public class IndexModel : PageModel
     {
-        private readonly FleetDeadlines.Data.LocalDbContext _context;
+        private readonly LocalDbContext _context;
 
-        public FleetModel(LocalDbContext context)
+        public IndexModel(LocalDbContext context)
         {
             _context = context;
         }
@@ -28,7 +28,7 @@ namespace FleetDeadlines.Pages
         {
             if (_context.Vehicles != null)
             {
-                Vehicles = (IList<Vehicle>)await _context.Vehicles.ToListAsync();
+                Vehicles = await _context.Vehicles.ToListAsync();
             }
 
             if (!string.IsNullOrEmpty(_NewRVN))

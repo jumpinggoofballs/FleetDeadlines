@@ -10,5 +10,12 @@ public class LocalDbContext : DbContext
     {
     }
 
-    public DbSet<Vehicle> Vehicles { get; set; } = null!;
+    public LocalDbContext() { }
+
+    public DbSet<Vehicle> Vehicles { get; set; } = default!;
+
+    //protected override void OnConfiguring(DbContextOptionsBuilder options)
+    //{
+    //    options.UseInMemoryDatabase("Vehicles.db");
+    //}
 }

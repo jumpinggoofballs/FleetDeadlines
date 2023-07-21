@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
 
 namespace FleetDeadlines.Models
 {
