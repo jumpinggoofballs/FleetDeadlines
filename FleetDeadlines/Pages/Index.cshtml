@@ -9,131 +9,148 @@
     <h1 class="display-4">Upcoming Deadlines</h1>
 </div>
 
-<br>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].RegistrationNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].Make)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].Colour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].YearOfManufacture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].MotStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].MotExpiryDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].TaxDueDate)
-            </th>
-            <th>
-                DEADLINES
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.ValidVehicles)
-        {
+@if (Model.ValidVehicles != null && Model.ValidVehicles.Count != 0)
+{
+    <br>
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(model => item.RegistrationNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Make)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Colour)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.YearOfManufacture)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.MotStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.MotExpiryDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.TaxDueDate)
-                </td>
-                <td>
-                    @Model.DaysCalculations(item)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].RegistrationNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].Make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].Colour)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].YearOfManufacture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].MotStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].MotExpiryDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].TaxDueDate)
+                </th>
+                <th>
+                    DEADLINES
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ValidVehicles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.RegistrationNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Make)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Colour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.YearOfManufacture)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.MotStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.MotExpiryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.TaxDueDate)
+                    </td>
+                    <td>
+                        @Model.DaysCalculations(item)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="text-center">
+        <br>
+        <br>
+        <p>
+            You have 0 cars in your fleet in good standing with the DVLA.
+        </p>
+    </div>
+}
 
-<br>
-<br>
-<div class="text-center">
-    <h2 class="display-4">Other Problems</h2>
-    <p>
-        Please contact DVLA directly to resolve these issues.
-    </p>
-</div>
+@if (Model.ProblemVehicles != null && Model.ProblemVehicles.Count != 0)
+{
+    <br>
+    <br>
+    <div class="text-center">
+        <h2 class="display-4">Other Problems</h2>
+        <p>
+            Please contact DVLA directly to resolve these issues.
+        </p>
+    </div>
 
-<br>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].RegistrationNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].Make)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].Colour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].YearOfManufacture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].MotStatus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].MotExpiryDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].TaxDueDate)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.ProblemVehicles)
-        {
+    <br>
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(model => item.RegistrationNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Make)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Colour)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.YearOfManufacture)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.MotStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.MotExpiryDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.TaxDueDate)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].RegistrationNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].Make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].Colour)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].YearOfManufacture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].MotStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].MotExpiryDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].TaxDueDate)
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ProblemVehicles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.RegistrationNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Make)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Colour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.YearOfManufacture)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.MotStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.MotExpiryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.TaxDueDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

@@ -29,45 +29,48 @@
     </form>
 </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].RegistrationNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].Make)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].Colour)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicles[0].YearOfManufacture)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Vehicles)
-        {
+@if (Model.Vehicles != null && Model.Vehicles.Count != 0)
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(model => item.RegistrationNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Make)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Colour)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.YearOfManufacture)
-                </td>
-                <td>
-                    <a asp-page="./Details" asp-route-id="@item.RegistrationNumber">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.RegistrationNumber">Delete</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].RegistrationNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].Make)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].Colour)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vehicles[0].YearOfManufacture)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Vehicles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.RegistrationNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Make)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Colour)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.YearOfManufacture)
+                    </td>
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@item.RegistrationNumber">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.RegistrationNumber">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
