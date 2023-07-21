@@ -31,11 +31,11 @@ namespace FleetDeadlines.Pages
             } 
             else if (motDate < taxDate)
             {
-                return $"{DaysRemaining(motDate)} days remaining for MOT / {DaysRemaining(taxDate)} days remaining for Tax";
+                return $"{DaysRemaining(motDate)} days remaining for MOT <br />{DaysRemaining(taxDate)} days remaining for Tax";
             } 
             else
             {
-                return $"{DaysRemaining(taxDate)} days remaining for Tax / {DaysRemaining(motDate)} days remaining for MOT";
+                return $"{DaysRemaining(taxDate)} days remaining for Tax <br />{DaysRemaining(motDate)} days remaining for MOT";
             }
         }
 

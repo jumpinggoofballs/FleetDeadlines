@@ -67,7 +67,7 @@
                         @Html.DisplayFor(model => item.TaxDueDate)
                     </td>
                     <td>
-                        @Model.DaysCalculations(item)
+                        @Html.Raw(Model.DaysCalculations(item))
                     </td>
                 </tr>
             }
