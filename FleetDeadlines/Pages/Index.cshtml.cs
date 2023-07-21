@@ -28,7 +28,8 @@ namespace FleetDeadlines.Pages
 
                 Func<Vehicle, bool> validPredicate = obj => (obj.MotExpiryDate != null && obj.TaxDueDate != null) == true;
 
-                ValidVehicles = Vehicles.Where(validPredicate).ToList();
+                ValidVehicles = Vehicles.Where(validPredicate).OrderBy(item => Math.Min(DateTime.Parse(item.MotExpiryDate).Ticks, DateTime.Parse(item.TaxDueDate).Ticks)).ToList();
+
                 ProblemVehicles = Vehicles.Where(item => !validPredicate(item)).ToList();
             }
         }
