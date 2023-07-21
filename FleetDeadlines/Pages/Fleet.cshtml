@@ -4,24 +4,29 @@
     ViewData["Title"] = "Manage Fleet";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Add new Vehicle to Fleet</h1>
-
-    <form method="post" asp-page-handler="RVNLookup" class="w-25">
-        <div class="form-group">
-            <label for="NewRVN">Look up by Vehicle Registration Number</label>
-            <input type="text" name="NewRVN" id="NewRVN" class="form-control" placeholder="Enter VRN without any spaces" />
-            <br />
-            <button type="submit" class="btn btn-primary">Find</button>
-        </div>
-    </form>
-</div>
-
-
-<hr />
 
 <div class="text-center">
     <h1 class="display-4">Fleet</h1>
+
+    <form method="post" asp-page-handler="RVNLookup" class="row p-4 row-cols-sm-auto g-2 bg-light mt-4 align-items-center">
+        <div class="col-1 w-25">
+            <label for="NewRVN">
+                <strong>
+                    Add new Vehicle: 
+                </strong>
+            </label>
+        </div>
+        <div class="col-2 w-50">
+            <input type="text" name="NewRVN" id="NewRVN" class="form-control" placeholder="Enter VRN without any spaces" />
+        </div>
+        <div class="col-3 w-25">
+            <button type="submit" class="btn btn-primary">
+                <strong>
+                    Find and Add
+                </strong>
+            </button>
+        </div>
+    </form>
 </div>
 
 <table class="table">
