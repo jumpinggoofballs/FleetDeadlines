@@ -7,16 +7,18 @@
 <div class="text-center">
     <h1 class="display-4">Add new Vehicle to Fleet</h1>
 
-    <form method="post" class="w-25">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form method="post" asp-page-handler="RVNLookup" class="w-25">
         <div class="form-group">
-            <label asp-for="NewVehicle.RegistrationNumber" class="control-label">Look up by Vehicle Registration Number</label>
-            <input asp-for="NewVehicle.RegistrationNumber" class="form-control" placeholder="Enter VRN without any spaces" />
-            <span asp-validation-for="NewVehicle.RegistrationNumber" class="text-danger"></span>
+            <label for="NewRVN">Look up by Vehicle Registration Number</label>
+            <input type="text" name="NewRVN" id="NewRVN" class="form-control" placeholder="Enter VRN without any spaces" />
+            <br />
+            <button type="submit" class="btn btn-primary">Find</button>
         </div>
     </form>
 </div>
 
+
+<hr />
 
 <div class="text-center">
     <h1 class="display-4">Fleet</h1>

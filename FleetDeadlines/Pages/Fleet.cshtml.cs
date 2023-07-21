@@ -1,5 +1,6 @@
 using FleetDeadlines.Data;
 using FleetDeadlines.Models;
+using FleetDeadlines.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +16,10 @@ namespace FleetDeadlines.Pages
             _context = context;
         }
 
-        [BindProperty]
-        public Vehicle NewVehicle { get; set; } = default!;
+        [BindProperty(SupportsGet = true)]
+        public string? _NewRVN { get; set; }
+
+        public Vehicle NewVehicle;
 
         public IList<Vehicle> Vehicles { get; set; } = default!;
 
@@ -27,19 +30,40 @@ namespace FleetDeadlines.Pages
             {
                 Vehicles = (IList<Vehicle>)await _context.Vehicles.ToListAsync();
             }
+
+            if (!string.IsNullOrEmpty(_NewRVN))
+            {
+                NewVehicle = DvlaGet.withReg(_NewRVN);
+                Console.WriteLine(NewVehicle.Make);
+            }
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostRVNLookupAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            //_context.Movie.Add(Movie);
-            //await _context.SaveChangesAsync();
+            _NewRVN = Request.Form["NewRVN"];
+            //NewVehicle = DvlaGet.withReg(_NewRVN);
+            //Console.WriteLine(NewVehicle.Make);
 
-            return RedirectToPage();
+            return Page();
+            //return RedirectToPage();
         }
+
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Page();
+        //    }
+
+        //    //_context.Movie.Add(Movie);
+        //    //await _context.SaveChangesAsync();
+
+        //    return RedirectToPage();
+        //}
     }
 }
