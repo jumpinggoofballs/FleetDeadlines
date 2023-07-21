@@ -12,6 +12,7 @@ namespace FleetDeadlines.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<LocalDbContext>>()))
             {
+                // Pre-Checks
                 context.Database.EnsureCreated();
 
                 if (context == null || context.Vehicles == null)
@@ -24,6 +25,7 @@ namespace FleetDeadlines.Models
                     return;   // DB has been seeded
                 }
 
+                // Seeding
                 List<string> testVRNs = new List<string>
                     { "AA19AAA", "AA19EEE", "AA19PPP", "L2WPS", "AA19SRN", "AA19DSL", "AA19MOT", "AA19AMP"};
 

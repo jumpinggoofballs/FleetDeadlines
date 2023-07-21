@@ -1,6 +1,5 @@
 ﻿using FleetDeadlines.Data;
 using FleetDeadlines.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +15,9 @@ namespace FleetDeadlines.Pages
         }
 
         public IList<Vehicle> Vehicles { get; set; } = default!;
+        public IList<Vehicle> ValidVehicles { get; set; } = default!;
+        
+        public IList<Vehicle> ProblemVehicles { get; set; } = default!;
 
 
         public async Task OnGetAsync()
@@ -23,6 +25,11 @@ namespace FleetDeadlines.Pages
             if (_context.Vehicles != null)
             {
                 Vehicles = (IList<Vehicle>)await _context.Vehicles.ToListAsync();
+
+                Func<Vehicle, bool> validPredicate = obj => (obj.MotExpiryDate != null && obj.TaxDueDate != null) == true;
+
+                ValidVehicles = Vehicles.Where(validPredicate).ToList();
+                ProblemVehicles = Vehicles.Where(item => !validPredicate(item)).ToList();
             }
         }
     }
