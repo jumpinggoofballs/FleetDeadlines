@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FleetDeadlines.Models
 {
-    public class Vehicle : DbContext
+    public class Vehicle
     {
         // RegistrationNumber *
         // ArtEndDate

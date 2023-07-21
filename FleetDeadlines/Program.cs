@@ -1,5 +1,6 @@
 using FleetDeadlines.Data;
 using FleetDeadlines.Models;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,9 +8,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<LocalDbContext>(opt =>
-    opt.UseInMemoryDatabase("Vehicles.db")
+var connectionString = "DataSource=myshareddb;mode=memory;cache=shared";
+var keepAliveConnection = new SqliteConnection(connectionString);
+keepAliveConnection.Open();
+
+builder.Services.AddDbContext<LocalDbContext>(options =>
+    options.UseSqlite(keepAliveConnection)
 );
+
+
+//builder.Services.AddDbContext<LocalDbContext>(opt =>
+//    opt.UseInMemoryDatabase("Vehicles.db")
+//);
 
 var app = builder.Build();
 
