@@ -27,10 +27,11 @@ namespace FleetDeadlines.Models
 
                 // Seeding
                 List<string> testVRNs = new List<string>
-                    // { "AA19AAA", "AA19EEE", "AA19PPP", "L2WPS", "AA19SRN", "AA19DSL", "AA19MOT", "AA19AMP"};
+                    // { "AA19AAA", "AA19EEE", "AA19PPP", "L2WPS", "AA19SRN", "AA19DSL", "AA19MOT", "AA19AMP"}; <- includes deliberately garbage entries
                     { "AA19AMP", "AA19MOT", "AA19PPP" };
 
                 // TODO: Make these requests parallel
+                // ^ Only possible with the modern HttpClient(), so not possible with the HttpWebRequest I currently use? (ref: https://stackoverflow.com/a/52338888)
                 foreach (var vrn in testVRNs)
                 {
                     context.Vehicles.Add(DvlaGet.withReg(vrn, "TEST"));
