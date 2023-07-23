@@ -27,15 +27,15 @@ namespace FleetDeadlines.Pages
 
             if (motDate == taxDate)
             {
-                return $"{DaysRemaining(motDate)} days remaining for both MOT and Tax";
+                return StylingInject(motDate, $"{DaysRemaining(motDate)} days remaining for both MOT and Tax");
             } 
             else if (motDate < taxDate)
             {
-                return $"{DaysRemaining(motDate)} days remaining for MOT <br />{DaysRemaining(taxDate)} days remaining for Tax";
+                return StylingInject(motDate, $"{DaysRemaining(motDate)} days remaining for MOT <br />{DaysRemaining(taxDate)} days remaining for Tax");
             } 
             else
             {
-                return $"{DaysRemaining(taxDate)} days remaining for Tax <br />{DaysRemaining(motDate)} days remaining for MOT";
+                return StylingInject(taxDate, $"{DaysRemaining(taxDate)} days remaining for Tax <br />{DaysRemaining(motDate)} days remaining for MOT");
             }
         }
 
@@ -45,9 +45,26 @@ namespace FleetDeadlines.Pages
             return (int)timeSpan.TotalDays;
         }
 
+        // Add coloration to upcomind deadlines text. 
+        // Hacky and should be done in a better way, but it'll do for now
+        private string StylingInject(DateTime deadline, string target)
+        {
+            // Past deadline(s)!
+            if (DaysRemaining(deadline) < 0)
+            {
+                return $"<div style=\"color:red;\">{target}</div>";
+            }
+            
+            // Closest deadline within two weeks
+            if (DaysRemaining(deadline) < 14)
+            {
+                return $"<div style=\"color:blue;\">{target}</div>";
+            }
+            
+            return target;
+        }
 
-
-    public async Task OnGetAsync()
+        public async Task OnGetAsync()
         {
             if (_context.Vehicles != null)
             {

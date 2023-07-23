@@ -25,7 +25,6 @@ namespace FleetDeadlines.Pages.Fleet
                 return NotFound();
             }
 
-            //var vehicle = await _context.Vehicles.FirstOrDefaultAsync(m => m.RegistrationNumber == id);
             var vehicle = DvlaGet.withReg(id);
 
             if (vehicle == null)

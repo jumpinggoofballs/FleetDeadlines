@@ -1,6 +1,5 @@
 using FleetDeadlines.Data;
 using FleetDeadlines.Models;
-using FleetDeadlines.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -30,12 +29,6 @@ namespace FleetDeadlines.Pages.Fleet
             {
                 Vehicles = await _context.Vehicles.ToListAsync();
             }
-
-            //if (!string.IsNullOrEmpty(_NewRVN))
-            //{
-            //    NewVehicle = DvlaGet.withReg(_NewRVN);
-            //    Console.WriteLine(NewVehicle.Make);
-            //}
         }
     }
 }

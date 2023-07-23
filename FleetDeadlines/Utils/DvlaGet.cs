@@ -6,7 +6,7 @@ namespace FleetDeadlines.Utils
 {
     public class DvlaGet
     {
-        // TODO: This would ideally be async
+        // TODO: This would ideally be async, and with either HttpClient or RestSharp 
         public static Vehicle withReg(string vrn, string apiTarget = "REAL")
         {
             DotNetEnv.Env.TraversePath().Load();
