@@ -18,7 +18,7 @@
                 </strong>
         </div>
         <div class="col-2 w-50">
-            <input id="newRVN" class="w-100" type="text" placeholder="Enter VRN without any spaces" />
+            <input id="newRVN" class="w-100" type="text" placeholder="Vehicle Registration Number" />
         </div>
         <div class="col-3 w-25">
             <a id="findButton" asp-page="./Find" asp-route-id="@Model.NewRVN" class="btn btn-primary">
@@ -79,7 +79,7 @@
 
 <script>
     document.getElementById("newRVN").addEventListener("input", function () {
-        var input = document.getElementById("newRVN").value.toUpperCase();
+        var input = document.getElementById("newRVN").value.toUpperCase().replace(/\s/g, "");
         var anchor = document.getElementById("findButton");
         anchor.href = anchor.href.replace(/[^\/]+$/, "Find?id=" + input);
     });
