@@ -27,151 +27,21 @@
 </div>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.RegistrationNumber" class="control-label"></label>
-                <input asp-for="ThisVehicle.RegistrationNumber" class="form-control" />
-                <span asp-validation-for="ThisVehicle.RegistrationNumber" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.ArtEndDate" class="control-label"></label>
-                <input asp-for="ThisVehicle.ArtEndDate" class="form-control" />
-                <span asp-validation-for="ThisVehicle.ArtEndDate" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.Co2Emissions" class="control-label"></label>
-                <input asp-for="ThisVehicle.Co2Emissions" class="form-control" />
-                <span asp-validation-for="ThisVehicle.Co2Emissions" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.EngineCapacity" class="control-label"></label>
-                <input asp-for="ThisVehicle.EngineCapacity" class="form-control" />
-                <span asp-validation-for="ThisVehicle.EngineCapacity" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.EuroStatus" class="control-label"></label>
-                <input asp-for="ThisVehicle.EuroStatus" class="form-control" />
-                <span asp-validation-for="ThisVehicle.EuroStatus" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.MarkedForExport" class="control-label"></label>
-                <input asp-for="ThisVehicle.MarkedForExport" class="form-control" />
-                <span asp-validation-for="ThisVehicle.MarkedForExport" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.FuelType" class="control-label"></label>
-                <input asp-for="ThisVehicle.FuelType" class="form-control" />
-                <span asp-validation-for="ThisVehicle.FuelType" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.MotStatus" class="control-label"></label>
-                <input asp-for="ThisVehicle.MotStatus" class="form-control" />
-                <span asp-validation-for="ThisVehicle.MotStatus" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.RevenueWeight" class="control-label"></label>
-                <input asp-for="ThisVehicle.RevenueWeight" class="form-control" />
-                <span asp-validation-for="ThisVehicle.RevenueWeight" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.RevenueWeight" class="control-label"></label>
-                <input asp-for="ThisVehicle.RevenueWeight" class="form-control" />
-                <span asp-validation-for="ThisVehicle.RevenueWeight" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.Colour" class="control-label"></label>
-                <input asp-for="ThisVehicle.Colour" class="form-control" />
-                <span asp-validation-for="ThisVehicle.Colour" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.Make" class="control-label"></label>
-                <input asp-for="ThisVehicle.Make" class="form-control" />
-                <span asp-validation-for="ThisVehicle.Make" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.TypeApproval" class="control-label"></label>
-                <input asp-for="ThisVehicle.TypeApproval" class="form-control" />
-                <span asp-validation-for="ThisVehicle.TypeApproval" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.YearOfManufacture" class="control-label"></label>
-                <input asp-for="ThisVehicle.YearOfManufacture" class="form-control" />
-                <span asp-validation-for="ThisVehicle.YearOfManufacture" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.TaxDueDate" class="control-label"></label>
-                <input asp-for="ThisVehicle.TaxDueDate" class="form-control" />
-                <span asp-validation-for="ThisVehicle.TaxDueDate" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.TaxStatus" class="control-label"></label>
-                <input asp-for="ThisVehicle.TaxStatus" class="form-control" />
-                <span asp-validation-for="ThisVehicle.TaxStatus" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.DateOfLastV5CIssued" class="control-label"></label>
-                <input asp-for="ThisVehicle.DateOfLastV5CIssued" class="form-control" />
-                <span asp-validation-for="ThisVehicle.DateOfLastV5CIssued" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.Wheelplan" class="control-label"></label>
-                <input asp-for="ThisVehicle.Wheelplan" class="form-control" />
-                <span asp-validation-for="ThisVehicle.Wheelplan" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.Wheelplan" class="control-label"></label>
-                <input asp-for="ThisVehicle.Wheelplan" class="form-control" />
-                <span asp-validation-for="ThisVehicle.Wheelplan" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.MonthOfFirstDvlaRegistration" class="control-label"></label>
-                <input asp-for="ThisVehicle.MonthOfFirstDvlaRegistration" class="form-control" />
-                <span asp-validation-for="ThisVehicle.MonthOfFirstDvlaRegistration" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.MonthOfFirstRegistration" class="control-label"></label>
-                <input asp-for="ThisVehicle.MonthOfFirstRegistration" class="form-control" />
-                <span asp-validation-for="ThisVehicle.MonthOfFirstRegistration" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.RealDrivingEmissions" class="control-label"></label>
-                <input asp-for="ThisVehicle.RealDrivingEmissions" class="form-control" />
-                <span asp-validation-for="ThisVehicle.RealDrivingEmissions" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="ThisVehicle.MotExpiryDate" class="control-label"></label>
-                <input asp-for="ThisVehicle.MotExpiryDate" class="form-control" />
-                <span asp-validation-for="ThisVehicle.MotExpiryDate" class="text-danger"></span>
-            </div>
-        </form>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row">
+        @foreach (var field in Model.ThisVehicle.GetType().GetProperties())
+        {
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">@field.Name</label>
+                    <input value="@field.GetValue(Model.ThisVehicle)" class="form-control" disabled />
+                </div>
+            </div>    
+        }
     </div>
-</div>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
