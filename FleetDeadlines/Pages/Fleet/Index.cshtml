@@ -79,19 +79,19 @@
 
 <script>
     var inputField = document.getElementById("newRVN");
+    var targetButton = document.getElementById("findButton");
 
     // Change the target of the Find button
     inputField.addEventListener("input", function () {
         var input = document.getElementById("newRVN").value.toUpperCase().replace(/\s/g, "");
-        var anchor = document.getElementById("findButton");
-        anchor.href = anchor.href.replace(/[^\/]+$/, "Find?id=" + input);
+        targetButton.href = targetButton.href.replace(/[^\/]+$/, "Find?id=" + input);
     });
 
     // Find function on pressing Enter
     inputField.addEventListener("keyup", function (event) {
         // keyCode 13 is the "Enter" key on the keyboard
         if (event.keyCode === 13) {
-            document.getElementById("findButton").click();
+            targetButton.click();
         }
     });
 </script>
