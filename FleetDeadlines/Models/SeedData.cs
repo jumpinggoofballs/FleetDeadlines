@@ -6,7 +6,7 @@ namespace FleetDeadlines.Models
 {
     public class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static void Initialize(IServiceProvider serviceProvider, string api, string key)
         {
             using (var context = new LocalDbContext(
                 serviceProvider.GetRequiredService<
@@ -34,7 +34,7 @@ namespace FleetDeadlines.Models
                 // ^ Only possible with the modern HttpClient(), so not possible with the HttpWebRequest I currently use? (ref: https://stackoverflow.com/a/52338888)
                 foreach (var vrn in testVRNs)
                 {
-                    context.Vehicles.Add(DvlaGet.withReg(vrn, "TEST"));
+                    context.Vehicles.Add(DvlaGet.withReg(vrn, api, key));
                 }
 
                 context.SaveChanges();

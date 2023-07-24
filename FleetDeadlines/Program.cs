@@ -16,19 +16,16 @@ builder.Services.AddDbContext<LocalDbContext>(options =>
     options.UseSqlite(keepAliveConnection)
 );
 
-
-//builder.Services.AddDbContext<LocalDbContext>(opt =>
-//    opt.UseInMemoryDatabase("Vehicles.db")
-//);
-
 var app = builder.Build();
 
 // Seed initial data
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
+    string api = builder.Configuration.GetValue<string>("UserOptions:TestApi");
+    string key = builder.Configuration.GetValue<string>("UserOptions:TestKey");
 
-    SeedData.Initialize(services);
+    SeedData.Initialize(services, api, key);
 }
 
 // Configure the HTTP request pipeline.

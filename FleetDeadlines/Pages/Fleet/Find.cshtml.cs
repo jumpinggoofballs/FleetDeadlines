@@ -9,10 +9,12 @@ namespace FleetDeadlines.Pages.Fleet
     public class FindModel : PageModel
     {
         private readonly Data.LocalDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public FindModel(Data.LocalDbContext context)
+        public FindModel(Data.LocalDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         [BindProperty]
@@ -25,7 +27,7 @@ namespace FleetDeadlines.Pages.Fleet
                 return NotFound();
             }
 
-            var vehicle = DvlaGet.withReg(id);
+            var vehicle = DvlaGet.withReg(id, _configuration["UserOptions:RealApi"], _configuration["UserOptions:RealKey"]);
 
             if (vehicle == null)
             {
@@ -56,7 +58,7 @@ namespace FleetDeadlines.Pages.Fleet
                 // The extra call to the DVLA API should not be necessary here
                 // But without it, ThisVehicle seems to clear its contents as the page is navigating away - except for RegistrationNumber, oddly enough
                 // TODO: More investigation needed
-                _context.Vehicles.Add(DvlaGet.withReg(ThisVehicle.RegistrationNumber));
+                _context.Vehicles.Add(DvlaGet.withReg(ThisVehicle.RegistrationNumber, _configuration["UserOptions:RealApi"], _configuration["UserOptions:RealKey"]));
                 await _context.SaveChangesAsync();
             }
 

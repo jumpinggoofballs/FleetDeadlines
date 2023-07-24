@@ -7,13 +7,8 @@ namespace FleetDeadlines.Utils
     public class DvlaGet
     {
         // TODO: This would ideally be async, and with either HttpClient or RestSharp 
-        public static Vehicle withReg(string vrn, string apiTarget = "REAL")
+        public static Vehicle withReg(string vrn, string api, string key)
         {
-            DotNetEnv.Env.TraversePath().Load();
-
-            string api = DotNetEnv.Env.GetString(apiTarget + "_API");
-            string key = DotNetEnv.Env.GetString(apiTarget + "_KEY");
-
             ///////////////////
             ///
             /// For whatever reason neither HttpClient nor RestSharp manage to successfully pass the x-api-key header to the server, so had to use HttpWebRequest
